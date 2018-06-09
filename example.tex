@@ -1,11 +1,18 @@
+\documentclass[12pt]{report}
+
+\usepackage{titling}
+
+\title{Example of a PDF/A-1b document}
+\author{Eric Berquist}
+\date{June 9th, 2018}
+
+\usepackage{filecontents}
 \begin{filecontents*}{\jobname.xmpdata}
-\Title{Example of a PDF/A-1b document}
-\Author{Eric Berquist}
+\Title{\thetitle}
+\Author{\theauthor}
 \Keywords{PDF/A\sep example}
 \Publisher{None}
 \end{filecontents*}
-
-\documentclass[12pt]{report}
 
 % https://tex.stackexchange.com/q/44694/94717
 \usepackage{iftex}
@@ -33,11 +40,9 @@
 \usepackage[a-1b]{pdfx}
 
 \usepackage{hyperref}
-\hypersetup{pdfencoding=unicode}
-
-\title{Example of a PDF/A-1b document}
-\author{Eric Berquist}
-\date{June 9th, 2018}
+\hypersetup{%
+  pdfencoding=unicode,%
+}
 
 \begin{document}
 
