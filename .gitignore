@@ -1,5 +1,8 @@
 example.xmpdata
 
+creationdate.lua
+creationdate.timestamp
+
 *.html
 *.pdf
 

@@ -5,25 +5,61 @@
 \Publisher{None}
 \end{filecontents*}
 
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
+
+% https://tex.stackexchange.com/q/44694/94717
+\usepackage{iftex}
+\ifPDFTeX
+   \usepackage[utf8]{inputenc}
+   \usepackage[T1]{fontenc}
+   \usepackage{lmodern}
+\else
+   \ifXeTeX
+     \usepackage{fontspec}
+   \else
+     \usepackage{luatextra}
+   \fi
+   \defaultfontfeatures{Ligatures=TeX}
+\fi
 
 \usepackage{lipsum}
+% https://tex.stackexchange.com/a/131202/94717
 \makeatletter
 \newcommand\singlelipsum[1]{%
   \begingroup\let\lips@par\relax\csname lipsum@\@roman{#1}\endcsname
 \endgroup }
 \makeatother
 
-\usepackage{hyperref}
-
 \usepackage[a-1b]{pdfx}
+
+\usepackage{hyperref}
+\hypersetup{pdfencoding=unicode}
 
 \title{Example of a PDF/A-1b document}
 \author{Eric Berquist}
 \date{June 9th, 2018}
 
 \begin{document}
+
+% https://tex.stackexchange.com/a/18927/94717
+\pagenumbering{Alph}
+\begin{titlepage}
 \maketitle
+\end{titlepage}
+\pagenumbering{arabic}
+
+\chapter{First chapter}
+
+\section{First section}
+
 \singlelipsum{1}
+
 \singlelipsum{2}
+
+\section{Second section}
+
+\singlelipsum{3}
+
+\singlelipsum{4}
+
 \end{document}
