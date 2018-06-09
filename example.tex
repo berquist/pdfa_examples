@@ -1,0 +1,29 @@
+\begin{filecontents*}{\jobname.xmpdata}
+\Title{Example of a PDF/A-1b document}
+\Author{Eric Berquist}
+\Keywords{PDF/A\sep example}
+\Publisher{None}
+\end{filecontents*}
+
+\documentclass[12pt]{article}
+
+\usepackage{lipsum}
+\makeatletter
+\newcommand\singlelipsum[1]{%
+  \begingroup\let\lips@par\relax\csname lipsum@\@roman{#1}\endcsname
+\endgroup }
+\makeatother
+
+\usepackage{hyperref}
+
+\usepackage[a-1b]{pdfx}
+
+\title{Example of a PDF/A-1b document}
+\author{Eric Berquist}
+\date{June 9th, 2018}
+
+\begin{document}
+\maketitle
+\singlelipsum{1}
+\singlelipsum{2}
+\end{document}
